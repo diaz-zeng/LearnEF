@@ -1,0 +1,6 @@
+*.vs
+*.vscode
+*/obj
+*/obj/*
+*/bin
+*/bin/*
