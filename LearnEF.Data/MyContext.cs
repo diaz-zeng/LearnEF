@@ -9,10 +9,10 @@ namespace LearnEF.Data
 {
     public class MyContext : DbContext
     {
-        // public MyContext(DbContextOptions<MyContext> options) : base(options)
-        // {
+        public MyContext(DbContextOptions<MyContext> options) : base(options)
+        {
 
-        // }
+        }
         public DbSet<Company> Companies
         {
             get;
@@ -39,16 +39,16 @@ namespace LearnEF.Data
             modelBuilder.Entity<Owner>().HasOne(x => x.Company).WithOne(x => x.Owner).HasForeignKey<Owner>(x => x.CompanyId);
         }
 
-        public readonly LoggerFactory MyLoggerFactory = new LoggerFactory(new[]{
-            new ConsoleLoggerProvider((category,level)=>
-                category==DbLoggerCategory.Database.Command.Name && level==LogLevel.Information,true)
-        });
+        // public readonly LoggerFactory MyLoggerFactory = new LoggerFactory(new[]{
+        //     new ConsoleLoggerProvider((category,level)=>
+        //         category==DbLoggerCategory.Database.Command.Name && level==LogLevel.Information,true)
+        // });
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            // optionsBuilder.UseSqlServer("Server=localhost;Database=LearnEF;User Id=sa;Password=Zly19981026.");
-            optionsBuilder.UseLoggerFactory(MyLoggerFactory).EnableSensitiveDataLogging(true).UseSqlServer("Server=localhost;Database=LearnEF;User Id=sa;Password=Zly19981026.");
-        }
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // {
+        //     // optionsBuilder.UseSqlServer("Server=localhost;Database=LearnEF;User Id=sa;Password=Zly19981026.");
+        //     optionsBuilder.UseLoggerFactory(MyLoggerFactory).EnableSensitiveDataLogging(true).UseSqlServer("Server=localhost;Database=LearnEF;User Id=sa;Password=Zly19981026.");
+        // }
 
 
     }
